@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
 
 from models.book import Book
-from models.book_list import books
+from models.book_list import *
 
 books_blueprint = Blueprint("books", __name__)
 
@@ -23,5 +23,5 @@ def add_new_book():
 
 @books_blueprint.route('/books/delete/<title>', methods=['POST'])
 def delete(title):
-    delete_book(title)
+    delete_book(title)  
     return render_template('index.jinja', title='Books Page', book_list=books)
