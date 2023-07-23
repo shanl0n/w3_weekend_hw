@@ -1,0 +1,38 @@
+{% extends 'base.jinja' %} {% block content %}
+    <h1>The Library</h1>
+    <div>
+        <form action="/books" method="post">
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" name="title">
+<!-- name in label for= and input id=  relates the two things to each other -->
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author">
+
+            <label for="genre">Genre:</label>
+            <input type="text" name="genre" id="genre">
+
+            <input type="submit" value="Add this book">
+        </form>
+    </div>
+    <div class="items">
+        {% for book in book_list %}    
+            <h2>{{ book.title }}</h2>
+            <h3>{{ book.author }}</h3>
+            <h4>{{ book.genre }}</h4>
+            <h5>
+                Availabilty:
+                {% if book.checked_out == true %}
+                Unavailable
+                {% else %}
+                Available
+                {% endif %}
+            </h5>
+            <form class="button" action="/books/delete/{{ book.title }}" method="POST">
+                <input type="submit" value="Delete book from system" class="deletion">
+            </form>
+    </div>
+        <hr/>
+        {% endfor %}
+    </>
+{% endblock content %}
