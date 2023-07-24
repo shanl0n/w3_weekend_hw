@@ -5,7 +5,6 @@
             <label for="title">Book Title:</label>
             <input type="text" id="title" name="title">
 <!-- name in label for= and input id=  relates the two things to each other -->
-
             <label for="author">Author:</label>
             <input type="text" id="author" name="author">
 
@@ -28,7 +27,7 @@
                 Available
                 {% endif %}
             </h5>
-            <form class="button" action="/books/delete/{{ book.title }}" method="POST">
+            <form action="/books/delete/{{ book.title }}" method="POST">
                 <input type="submit" value="Delete book from system" class="deletion">
             </form>
         {% endfor %}
