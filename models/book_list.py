@@ -16,6 +16,4 @@ def delete_book(title):
     for book in books:
         if book.title == title:
             book_to_delete = book
-            break
-        
     books.remove(book_to_delete)
